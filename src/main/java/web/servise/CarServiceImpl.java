@@ -2,20 +2,23 @@ package web.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import web.dao.CarDaoImpl;
 import web.models.Car;
+
 import java.util.List;
 
+@Service
 @Component
-public class CarServiseImpl implements CarServise {
+public class CarServiceImpl implements CarService {
     private final CarDaoImpl carDao;
 
     @Autowired
-    public CarServiseImpl(CarDaoImpl carDao) {
+    public CarServiceImpl(CarDaoImpl carDao) {
         this.carDao = carDao;
     }
 
-    public List<Car> show(int count, List<Car> list) {
-        return carDao.show(count, list);
+    public List<Car> getListCars(int count) {
+        return carDao.getListCars(count);
     }
 }
